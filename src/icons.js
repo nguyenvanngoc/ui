@@ -2,14 +2,16 @@ const icons = require.context('../node_modules/material-design-icons/sprites/svg
 
 export default {
   install (Vue) {
-    const iconsWrapper = document.createElement('div')
-    iconsWrapper.style.display = 'none'
-    // Load all the SVG symbols
-    icons.keys().forEach(key => {
-      const result = icons(key)
-      iconsWrapper.innerHTML += result
-    })
-    document.body.insertBefore(iconsWrapper, document.body.firstChild)
+    if (typeof document !== 'undefined') {
+      const iconsWrapper = document.createElement('div')
+      iconsWrapper.style.display = 'none'
+      // Load all the SVG symbols
+      icons.keys().forEach(key => {
+        const result = icons(key)
+        iconsWrapper.innerHTML += result
+      })
+      document.body.insertBefore(iconsWrapper, document.body.firstChild)
+    }
   },
 }
 
